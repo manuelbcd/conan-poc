@@ -1,0 +1,24 @@
+version: "3.6"
+services:
+
+#  conan-server:
+#    container_name: 'conan_server'
+#    image: 'conanio/conan_server'
+#    entrypoint: /bin/sh
+#    restart: always
+#    volumes:
+#      - ./conan:/var/lib/conan
+#      - ./conan_data:/root/.conan_server
+#    ports:
+#      - '9300:9300'
+#    command: -c "gunicorn -b 0.0.0.0:9300 conans.server.server_launcher:app & (sleep 10 && killall gunicorn && sleep 10 && sed -i 's/localhost/conan-server/g' /root/.conan_server/server.conf && cat /root/.conan_server/server.conf && ./entrypoint.sh)"
+
+  artifactory:
+    container_name: artifactory
+    image: docker.bintray.io/jfrog/artifactory-cpp-ce:latest
+    restart: always
+    ports: 
+      - '8081:8081'
+      - '8082:8082'
+    volumes:
+      - ./artifactory:/var/opt/jfrog/artifactory

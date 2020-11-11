@@ -1,0 +1,7 @@
+# Server (Artifactory cpp-ce + Conan server)
+./server/prepare.sh
+./server/docker-compose up -d
+
+# Client (Conan client)
+pip install conan
+conan remote add artifactory http://localhost:8081/artifactory/api/conan/conan-local
